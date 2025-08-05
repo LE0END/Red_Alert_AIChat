@@ -12,6 +12,8 @@ __pycache__/
 # Данные и модели
 /.venv/
 /models/
+/AIChat/.venv/
+/AIChat/models/
 
 # C extensions
 *.so
