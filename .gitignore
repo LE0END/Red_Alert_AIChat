@@ -1,7 +1,17 @@
+#.gitignore
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
+
+# Файлы окружения
+.env
+__pycache__/
+
+# Данные и модели
+/.venv/
+/models/
 
 # C extensions
 *.so
