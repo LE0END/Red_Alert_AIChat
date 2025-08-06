@@ -25,8 +25,7 @@ python -m venv .venv
 3. Установить зависимости: 	
 ```bash
 python -m pip install --upgrade pip
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-pip install accelerate huggingface-hub transformers dotenv requests
+python -m pip install -r requirements.txt
 ```
 4. Выполнить:
 ```bash
