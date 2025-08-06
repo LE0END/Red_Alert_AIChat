@@ -23,7 +23,7 @@ if check_huggingface():
         local_dir=model_path,
     )
 else:
-    print('Local Mode Started without connection.')
+    print('Local Mode Started.')
 #Штука для автоматического формирования токенов
 tokenizer = AutoTokenizer.from_pretrained(model_path)#, trust_remote_code=True
 
