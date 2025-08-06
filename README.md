@@ -26,7 +26,7 @@ python -m venv .venv
 ```bash
 python -m pip install --upgrade pip
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-pip install accelerate huggingface-hub transformers dotenv
+pip install accelerate huggingface-hub transformers dotenv requests
 ```
 4. Выполнить:
 ```bash
