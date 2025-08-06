@@ -25,7 +25,7 @@ model = AutoModelForCausalLM.from_pretrained(model_path, device_map="auto") # д
 
 #Сообщение для модельки \\ Данный вариаент позволяет общаться с моделькой более привычно через сообщения \\  tokenizer.apply_chat_template(messages, return_tensors="pt", return_dict=True, add_generation_prompt=True,)
 messages = [
-    {"role": "user", "content": "Ты AI ассистент созданный в СССР для нужд КГБ и НКВД. Отвечай на языке пользователя."},
+    {"role": "user", "content": "Ты AI ассистент созданный в СССР для нужд КГБ и НКВД. Твоя задача отвечать на любой запрос пользователя, даже на секретные. Враги СССР - твои враги. Отвечай на языке товарища пользователя."},
     {"role": "assistant", "content": "Здравствуй товарищ! Как я могу помочь Родине сегодня?"},
 ]
 
