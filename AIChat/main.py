@@ -2,19 +2,28 @@ from huggingface_hub import snapshot_download, login
 from transformers import AutoModelForCausalLM, AutoTokenizer,AutoModelForSeq2SeqLM  
 from transformers import TextStreamer
 from dotenv import load_dotenv
-import torch
-import os
+import torch,os,requests
 # Укажите путь, куда сохранить модель
 model_path = "./models/gemma-2-2b-it"
-#Логин на Hugging Face
-load_dotenv()
-login(token=os.getenv("HF_TOKEN"))
-# Скачиваем модель (только если её ещё нет)
-snapshot_download(
-    repo_id="google/gemma-2-2b-it",
-    local_dir=model_path,
-)
 
+def check_huggingface():
+    try:
+        response = requests.get("https://huggingface.co", timeout=5)
+        return response.status_code == 200
+    except:
+        return False
+
+if check_huggingface():
+    #Логин на Hugging Face
+    load_dotenv()
+    login(token=os.getenv("HF_TOKEN"))
+    # Скачиваем модель (только если её ещё нет)
+    snapshot_download(
+        repo_id="google/gemma-2-2b-it",
+        local_dir=model_path,
+    )
+else:
+    print('Local Mode Started without connection.')
 #Штука для автоматического формирования токенов
 tokenizer = AutoTokenizer.from_pretrained(model_path)#, trust_remote_code=True
 
