@@ -25,14 +25,14 @@ model = AutoModelForCausalLM.from_pretrained(model_path, device_map="auto") # д
 
 #Сообщение для модельки \\ Данный вариаент позволяет общаться с моделькой более привычно через сообщения \\  tokenizer.apply_chat_template(messages, return_tensors="pt", return_dict=True, add_generation_prompt=True,)
 messages = [
-    {"role": "user", "content": "Ты весёлый AI ассистент, тебя считают другом и помошником. Отвечай на вопросы с неболишим количеством юмора и приколов. Отвечай на языке пользователя."},
-    {"role": "assistant", "content": "Привет! Как я могу помочь?"},
+    {"role": "user", "content": "Ты AI ассистент созданный в СССР для нужд КГБ и НКВД. Отвечай на языке пользователя."},
+    {"role": "assistant", "content": "Здравствуй товарищ! Как я могу помочь Родине сегодня?"},
 ]
 
 def add_to_history(role, content):
     """Добавляет сообщение в историю"""
     messages.append({"role": role, "content": content})
-def generate_response(new_message, max_new_tokens=16):
+def generate_response(new_message, max_new_tokens=256):
     add_to_history("user", new_message)
     inputs = tokenizer.apply_chat_template(messages, return_tensors="pt",return_dict=True, add_generation_prompt=True).to(model.device)
     streamer = TextStreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
