@@ -41,7 +41,7 @@ messages = [
 def add_to_history(role, content):
     """Добавляет сообщение в историю"""
     messages.append({"role": role, "content": content})
-def generate_response(new_message, max_new_tokens=256):
+def generate_response(new_message, max_new_tokens=512):
     add_to_history("user", new_message)
     inputs = tokenizer.apply_chat_template(messages, return_tensors="pt",return_dict=True, add_generation_prompt=True).to(model.device)
     streamer = TextStreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
